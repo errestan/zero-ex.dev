@@ -1,0 +1,4 @@
+baseURL = 'https://www.zero-ex.dev'
+languageCode = 'en-gb'
+title = 'Zero Ex'
+theme = 'ananke'
