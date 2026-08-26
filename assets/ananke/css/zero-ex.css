@@ -1,0 +1,102 @@
+/* ---------------------------------------------------------------------------
+   Zero Ex palette — sampled from assets/images/logo-full.jpg.
+
+   Concatenated after the theme's own sheets by func/style/GetMainCSS.html, so
+   plain specificity is enough to win; no !important except where noted.
+
+   The theme's colour params take a *class name*, so hugo.toml points
+   text_color / background_color_class / cover_dimming_class at the zx-*
+   classes defined here rather than at Tachyons skins (which have no neon).
+   Everything else below overrides Tachyons utilities that the theme's
+   templates hardcode, scoped so they only apply where the theme uses them.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --zx-field:      #010c1a;  /* page background: the logo's darkest field */
+  --zx-surface:    #0b1220;  /* cards, code, callouts: one step up */
+  --zx-chrome:     #020a14;  /* header and footer */
+  --zx-border:     #16324a;
+  --zx-copy:       #c8d4e0;
+  --zx-heading:    #ffffff;
+  --zx-muted:      #8fa3b8;
+  --zx-cyan:       #4cdfe9;  /* the hexagon outline */
+  --zx-cyan-deep:  #138cb2;
+  --zx-green:      #56dd8f;  /* the X */
+}
+
+body { background-color: var(--zx-field); color: var(--zx-copy); }
+
+/* Classes referenced from hugo.toml params */
+.zx-copy      { color: var(--zx-copy); }
+.zx-chrome    { background-color: var(--zx-chrome); }
+.zx-cover-dim { background-color: rgba(1, 12, 26, 0.72); }
+
+main h1, main h2, main h3, main h4, main h5, main h6,
+main .near-black { color: var(--zx-heading); }
+main .gray       { color: var(--zx-muted); }
+main .dark-gray  { color: var(--zx-copy); }
+
+/* Post cards and summaries */
+main .bg-white    { background-color: var(--zx-surface); }
+main .b--black-10 { border-color: var(--zx-border); }
+
+/* Body copy links */
+.nested-links a { color: var(--zx-cyan); }
+.nested-links a:hover,
+.nested-links a:focus { color: var(--zx-green); }
+
+/* "Read more" buttons: outline rather than the theme's light-gray fill */
+a.bg-light-gray {
+  background-color: transparent;
+  border-color: var(--zx-cyan-deep);
+  color: var(--zx-cyan);
+}
+a.hover-bg-moon-gray:hover {
+  background-color: var(--zx-cyan);
+  border-color: var(--zx-cyan);
+  color: var(--zx-field);
+}
+
+/* Table-of-contents and related-posts callouts */
+div.bg-light-gray { background-color: var(--zx-surface); color: var(--zx-copy); }
+
+/* Tag pills */
+main .br-pill.ba { border-color: var(--zx-border); color: var(--zx-cyan); }
+main .br-pill.ba:hover { border-color: var(--zx-cyan); color: var(--zx-green); }
+
+/* Taxonomy term links and the home page's "all posts" button */
+main .blue { color: var(--zx-cyan); }
+main .hover-black:hover { color: var(--zx-green); }
+main .bg-mid-gray { background-color: var(--zx-cyan-deep); }
+
+/* Pagination, styled in the theme's _hugo-internal-templates.css */
+.pagination li a {
+  background-color: var(--zx-surface);
+  color: var(--zx-copy);
+  border-color: var(--zx-border);
+}
+.pagination li a:hover { color: var(--zx-cyan); }
+.pagination li.active a,
+.pagination li.active a:link,
+.pagination li.active a:visited { background-color: var(--zx-cyan); color: var(--zx-field); }
+
+/* Code. Fenced blocks with a language are rendered by Chroma with inline
+   styles, so the wrapper background needs !important to be reachable; the
+   token colours stay as Chroma emits them. */
+pre { background-color: var(--zx-surface); color: var(--zx-copy); }
+.highlight > pre { background-color: var(--zx-surface) !important; }
+code { color: var(--zx-cyan); }
+pre code { color: inherit; }
+
+.lh-copy blockquote { border-left-color: var(--zx-cyan-deep); color: var(--zx-muted); }
+
+/* Social icons. The theme generates per-service hover colours from its
+   built-in table (#6cc644 for GitHub, #6364FF for Mastodon); these land
+   after that block and pull them back to the logo palette. */
+.ananke-socials a { color: var(--zx-muted); }
+.ananke-socials a.github:hover   { color: var(--zx-cyan); }
+.ananke-socials a.mastodon:hover { color: var(--zx-green); }
+
+footer a.hover-white:hover { color: var(--zx-cyan); }
+
+::selection { background-color: var(--zx-cyan); color: var(--zx-field); }

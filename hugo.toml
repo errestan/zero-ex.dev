@@ -8,6 +8,29 @@ theme = 'ananke'
   # is emitted by layouts/partials/site-favicon.html.
   site_logo = '/images/logo.png'
   favicon = '/favicon.ico'
-  background_color_class = 'bg-black'
   # Fallback Open Graph / Twitter card image for pages without their own.
   images = ['images/logo-social.jpg']
+
+  # Palette matched to the logo. These three params take a CSS *class name*,
+  # which the theme drops straight into a class attribute — Tachyons has no
+  # neon, so they point at the zx-* classes in assets/ananke/css/zero-ex.css.
+  custom_css = ['zero-ex.css']
+  text_color = 'zx-copy'
+  background_color_class = 'zx-chrome'
+  cover_dimming_class = 'zx-cover-dim'
+  # Drops the theme's default 'bg-near-white'; the body colour comes from the
+  # stylesheet instead.
+  body_classes = 'avenir'
+
+# Rendered by the theme's social-follow partial in the site header; the theme
+# already ships the GitHub mark and label.
+[[params.ananke_socials]]
+  name = 'github'
+  url = 'https://github.com/errestan'
+
+# rel="me" is what lets Mastodon verify the link back on the profile;
+# the theme's social-follow partial defaults to "noopener" without it.
+[[params.ananke_socials]]
+  name = 'mastodon'
+  url = 'https://infosec.exchange/@errestan'
+  rel = 'me noopener'
