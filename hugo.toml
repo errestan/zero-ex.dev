@@ -2,3 +2,12 @@ baseURL = 'https://www.zero-ex.dev'
 languageCode = 'en-gb'
 title = 'Zero Ex'
 theme = 'ananke'
+
+[params]
+  # Header wordmark; the icon set (favicon.ico, apple-touch-icon, web manifest)
+  # is emitted by layouts/partials/site-favicon.html.
+  site_logo = '/images/logo.png'
+  favicon = '/favicon.ico'
+  background_color_class = 'bg-black'
+  # Fallback Open Graph / Twitter card image for pages without their own.
+  images = ['images/logo-social.jpg']
