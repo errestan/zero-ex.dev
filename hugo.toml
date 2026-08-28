@@ -1,11 +1,11 @@
 baseURL = 'https://www.zero-ex.dev'
-languageCode = 'en-gb'
+locale = 'en-gb'
 title = 'Zero Ex'
 theme = 'ananke'
 
 [params]
   # Header wordmark; the icon set (favicon.ico, apple-touch-icon, web manifest)
-  # is emitted by layouts/partials/site-favicon.html.
+  # is emitted by layouts/_partials/site-favicon.html.
   site_logo = '/images/logo.png'
   favicon = '/favicon.ico'
   # Fallback Open Graph / Twitter card image for pages without their own.
@@ -14,7 +14,6 @@ theme = 'ananke'
   # Palette matched to the logo. These three params take a CSS *class name*,
   # which the theme drops straight into a class attribute — Tachyons has no
   # neon, so they point at the zx-* classes in assets/ananke/css/zero-ex.css.
-  custom_css = ['zero-ex.css']
   text_color = 'zx-copy'
   background_color_class = 'zx-chrome'
   cover_dimming_class = 'zx-cover-dim'
@@ -22,15 +21,28 @@ theme = 'ananke'
   # stylesheet instead.
   body_classes = 'avenir'
 
-# Rendered by the theme's social-follow partial in the site header; the theme
-# already ships the GitHub mark and label.
-[[params.ananke_socials]]
-  name = 'github'
-  url = 'https://github.com/errestan'
+[params.ananke]
+  custom_css = ['zero-ex.css']
 
-# rel="me" is what lets Mastodon verify the link back on the profile;
-# the theme's social-follow partial defaults to "noopener" without it.
-[[params.ananke_socials]]
-  name = 'mastodon'
-  url = 'https://infosec.exchange/@errestan'
-  rel = 'me noopener'
+# Social links. Ananke v2.13+ replaced the flat [[params.ananke_socials]] list
+# with a nested [params.ananke.social] tree: `follow.networks` picks which of
+# the theme's built-in network definitions to render, and a per-network table
+# supplies the account. The theme always emits rel="noopener", so `rel` here
+# only needs the extra token.
+[params.ananke.social.follow]
+  networks = ['github', 'mastodon']
+
+[params.ananke.social.github]
+  username = 'errestan'
+
+[params.ananke.social.mastodon]
+  # The built-in mastodon definition has no profile URL template (instances
+  # vary), so the full link goes here instead of a username.
+  profilelink = 'https://infosec.exchange/@errestan'
+  # rel="me" is what lets Mastodon verify the link back on the profile.
+  rel = 'me'
+
+# Share links on posts, previously provided by a local copy of the theme's
+# social-share partial. These three match what that copy rendered.
+[params.ananke.social.share]
+  networks = ['facebook', 'twitter', 'linkedin']
