@@ -1,2 +1,9 @@
+# Hugo build output
 public/
+
+# Hugo asset pipeline cache. Regenerated on every build, and the cache keys
+# change with the Hugo/theme version, so committed entries go stale.
+resources/_gen/
+
+# ctags
 tags
