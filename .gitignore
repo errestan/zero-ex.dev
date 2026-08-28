@@ -1,6 +1,9 @@
 # Hugo build output
 public/
 
+# Transient lock Hugo writes for the duration of each build.
+.hugo_build.lock
+
 # Hugo asset pipeline cache. Regenerated on every build, and the cache keys
 # change with the Hugo/theme version, so committed entries go stale.
 resources/_gen/
